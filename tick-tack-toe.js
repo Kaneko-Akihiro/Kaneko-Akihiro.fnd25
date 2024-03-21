@@ -10,7 +10,7 @@ function initializeEvent() {
     let square = document.getElementById(i);
     square.innerText = "";
     square.disabled = false;
-    square.classList.remove("maru", "batsu")
+    square.classList.remove("circle", "cross")
   }
 }
 
