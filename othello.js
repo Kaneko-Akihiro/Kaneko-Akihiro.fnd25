@@ -41,6 +41,7 @@ $(function () {
 function clickSquareEvent() {
   // クリックされたマス目のオブジェクトを取得する
   let square = $(this);
+  console.log(square)
 
   // クリックされたマス目が選択できない場合はスキップ
   if (!canSelect(square)) {
