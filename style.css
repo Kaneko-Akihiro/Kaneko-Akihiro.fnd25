@@ -1,21 +1,28 @@
+body {
+  background: url(./chelly.gif) no-repeat;
+  background-size:contain;
+  background-position: center;
+}
+
 .button-container {
   background: url(./kokuban.png) no-repeat;
-  background-size:cover;
+  background-size:contain;
+  background-position: center;
   text-align: center;
-  margin-top: 10px;
 }
 
 #title {
   /* 配置　*/
   text-align: center;
   /* 色 */
-  color: rgb(8, 5, 5);
+  color: rgb(255, 132, 0);
+  font-size: 2rem;
 }
 
 .game-button{
   border: 0;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   line-height: 2.5;
   padding: 0 20px;
   font-size: 2rem;
