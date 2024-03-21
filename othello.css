@@ -1,6 +1,8 @@
 body {
-    background: url(./othello.png) no-repeat;
-    background-size: cover;
+    background: url(./wood.png) ;
+    background-size: contain;
+
+
 }
 
 #title {
@@ -27,8 +29,16 @@ body {
 #controller {
     /* 配置 */
     position:fixed;
+    top: 10rem;
+    left: 1rem;
+}
+
+#controller #btn-return{
+    /* 配置 */
+    position:fixed;
     top: 1rem;
     left: 1rem;
+    background-color: rgb(46, 97, 50);
 }
 
 .container {
@@ -59,3 +69,4 @@ body {
 .cant-select {
     background-color: green !important;
 }
+
