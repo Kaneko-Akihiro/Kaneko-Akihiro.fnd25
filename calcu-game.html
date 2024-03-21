@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./calcu-game.css" rel="stylesheet" />
+  <script defer src="./calcu-game.js"></script>
+  <title>けいさんゲーム</title>
+</head>
+<body>
+  <div id = "title">
+    <h1>けいさんゲーム</h1>
+  </div>
+  <h2>むずかしさをえらんでね！</h2>
+  <div class="menu">
+    <div id = "1">
+      <button type="menu" class=level>
+        かんたん
+      </button>
+    </div>
+    <div id = "2">
+      <button type="menu" class=level>
+        ふつう
+      </button>
+    </div>
+    <div id = "3">
+      <button type="menu" class=level>
+        むずかしい
+      </button>
+    </div>
+  </div>
+
+    <div id = "answerArea">
+      <div id = "question" >もんだい</div>
+      <p><div id = "expression">ここにでるよ！</div></p>
+      <p><input id = "answer" ></p>
+    </div>
+
+    <div id = "controller">
+      <button type = "button" id = "btn-initialize" onclick="initializeEvent()">リセット</button>
+      <button type = "button" id = "btn-return" onclick="history.back()">こくばんへもどる</button>
+    </div>
+</body>
+</html>
