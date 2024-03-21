@@ -69,20 +69,14 @@ h2{
   display: none;
   font-size: 25px;
   color: antiquewhite;
-
 }
 
-#answer{
-  width: 300px;
-  line-height: 40px;
-  font-size: 3rem;
-}
 
-#expression{
-  width: 700px;
-  height: 200px;
+.expression{
+  width: 200px;
+  line-height: 30px;
+  font-size: 2rem;
   color: black;
-  display: inline-block;
   background-color: antiquewhite;
   font-size: 3rem;
 }
