@@ -8,24 +8,29 @@
 </head>
 <body>
     <div id = "title">
-        <h1>Welcome!!!</h1>
+        <h1>ようこそ！</h1>
     </div>
     <div class = "button-container">
-        <div class=game>
-            <button class="game-button"
-            type="button">けいさんゲーム</button>
-        </div>
-
         <div class="game">
             <button class="game-button"
-            type="button">ブロックくずし</button>
+            type="button"onclick="location.href='./tick-tack-toe.html'">〇×ゲーム</button>
+        </div>
+
+        <div class=game>
+            <button class="game-button"
+            type="button"onclick="location.href='./calcu-game.html'">けいさんゲーム</button>
+        </div>
+        
+        <div class="game">
+            <button class="game-button"
+            type="button" onclick="location.href='./gomoku.html'">ごもくならべ</button>
         </div>
 
         <div class="game">
             <button class="game-button"
             type="button"onclick="location.href='./othello.html'">オセロ</button>
         </div>
-
     </div>
+    <button id=balse>バルス</bottun>
 </body>
 </html>
