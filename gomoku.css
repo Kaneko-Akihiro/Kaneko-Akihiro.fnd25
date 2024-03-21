@@ -1,0 +1,66 @@
+body {
+  background: url(./wood.png) ;
+  background-size: contain;
+  text-align: center;
+}
+
+.square {
+  vertical-align: middle;
+  width: 4rem;
+  height: 4rem;
+  font-size: 3rem;
+  background-color: burlywood;
+  border: 4px;
+  border-color: burlywood;
+  margin-right: 0px;
+}
+
+.square:disabled {
+  background-color: burlywood;
+}
+
+.square.white {
+  color: white;
+} 
+.square.black {
+  color: black;
+} 
+
+#board {
+  /* 配置　*/
+  margin: 5rem auto;
+
+  /* サイズ */
+  width: 45rem;
+  height: 42rem;
+
+  /* 色 */
+  background-color: black;
+  outline: 1.5rem solid;
+  outline-color: black;
+}
+
+.board-row{
+  margin-top: 4px;
+}
+
+
+#controller #btn-return{
+  /* 配置 */
+  position:fixed;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgb(46, 97, 50);
+  font-size: 25px;
+  color: white;
+}
+
+#controller #btn-initialize{
+  /* 配置 */
+  position:fixed;
+  top: 10rem;
+  left: 1rem;
+  font-size: 25px;
+  background-color: gray;
+  
+}
