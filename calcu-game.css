@@ -80,3 +80,9 @@ h2{
   background-color: antiquewhite;
   font-size: 3rem;
 }
+
+#start{
+  font-size: 20px;
+  width: 100px;
+  height: auto;
+}
