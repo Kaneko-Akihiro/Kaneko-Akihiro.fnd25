@@ -1,6 +1,6 @@
 body {
   background: url(./wood.png) ;
-  background-size: contain;
+  background-size:auto;
   text-align: center;
 }
 
@@ -9,10 +9,15 @@ body {
   width: 12rem;
   height: 12rem;
   font-size: 6rem;
+  background-color:antiquewhite;
 }
 
+#result{
+  color: antiquewhite;
+  font-size: 50px;
+}
 .square:disabled {
-  background-color: white;
+  background-color: antiquewhite;
   color: black;
 }
 
