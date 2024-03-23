@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./balse.css" rel="stylesheet" />
-  <script defer src="./balse.js"></script>
-  <title>バルス！！</title>
-</head>
-<body>
-  <button id=balse >バルス</button>
-  <div class="img">
-    <img id="balsed" class="balsed" src="balse.jpg">
-    <img id="balsed2" class="balsed2" src="balse2.jpg">
-    <img id="thankyou" class="thankyou" src="thankyou.png">
-  </div>
-</body>
-</html>
+const btnBalse = document.getElementById("balse");
+const imgBalse = document.getElementById("balsed");
+const imgBalse2 = document.getElementById("balsed2");
+const imgThankyou = document.getElementById("thankyou");
+
+btnBalse.addEventListener("click", balse);
+
+function balse() {
+  btnBalse.style.display = "none"
+  imgBalse.style.opacity = 1;
+  setTimeout(balse2,3000)
+}
+
+function balse2() {
+  imgBalse2.style.opacity = 1;
+  setTimeout(thankyou,3000)
+  imgBalse.style.display = "none";
+}
+
+const thankyou = function(){
+  imgThankyou.style.opacity = 1;
+  imgBalse2.style.display = "none";
+}
