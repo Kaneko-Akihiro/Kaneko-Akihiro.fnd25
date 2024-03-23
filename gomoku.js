@@ -29,7 +29,6 @@ function clickSquare(i) {
   targetSquare.disabled = true;
   //ターン変更
   isOddTurn = !isOddTurn ;
-  console.log(isOddTurn);
 }
 
 const target = document.getElementsByClassName("square");
