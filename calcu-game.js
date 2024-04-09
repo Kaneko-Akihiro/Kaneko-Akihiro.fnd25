@@ -4,7 +4,8 @@
 ++++++++++++++++ */
 function initializeEvent() {
   area.style.display = "none";
-  menu[0].style.display = "block";
+  menu[0].style.display = "none";
+  opeArea[0].style.display = "block";
   document.getElementById("expressionLeft").value = "";
   document.getElementById("expressionRight").value = "";
   document.getElementById("answer").value = "";
@@ -16,14 +17,17 @@ function initializeEvent() {
   for (let i = 0; i < expression.length; i++) {
     expression[i].disabled = false;
   }
+  clearTimeout(timer);
 }
 
 /*++++++++++++++
 変数宣言
 ++++++++++++++++ */
 
-const target = document.getElementsByClassName("level");
+const operator = document.getElementsByClassName("operator");
+const level = document.getElementsByClassName("level");
 const menu = document.getElementsByClassName("menu");
+const opeArea = document.getElementsByClassName("selectOperator");
 const startBtn = document.getElementById("start"); 
 const answerBox = document.getElementById("answer");
 const area = document.getElementById("answerArea");
@@ -31,14 +35,17 @@ let choiceLevel = 0;
 let maxNum = 0;
 let score = 0;
 let expression = document.getElementsByClassName("expression");
-
+let timer
 /*++++++++++++++
 イベント設定処理
 ++++++++++++++++ */
 
 //難易度ボタン設定
-for(let i = 0; i < target.length; i++) {
-  target[i].addEventListener("click",{name:i, handleEvent:selectMenu});
+for(let i = 0; i < operator.length; i++) {
+  operator[i].addEventListener("click",{name:i, handleEvent:selectOperator});
+}
+for(let i = 0; i < level.length; i++) {
+  level[i].addEventListener("click",{name:i, handleEvent:selectMenu});
 }
 
 //スタートボタン設定
@@ -51,15 +58,36 @@ answerBox.addEventListener("keydown", enterKyePress);
 　　　関数
 ++++++++++++++++ */
 
+//演算選択時処理
+function selectOperator(i) {
+  console.log(i)
+  choiceOpe = i.target.id;
+  if (choiceOpe === "+") {
+    document.getElementById("operators").innerText = "　＋　";
+    } else if (choiceOpe === "-") {
+    document.getElementById("operators").innerText = "　－　";
+  } else if (choiceOpe === "*") {
+    document.getElementById("operators").innerText = "　×　";
+  } else if (choiceOpe === "/") {
+    document.getElementById("operators").innerText = "　÷　";
+  }
+  menu[0].style.display = "block";
+  opeArea[0].style.display = "none";
+}
+
 //難易度選択時処理
-function selectMenu(level) {
-  choiceLevel = level.target.id;
+function selectMenu(i) {
+  console.log(i)
+  choiceLevel = i.target.id;
   if (choiceLevel === "1") {
-    maxNum = 10;
+    leftMaxNum = 10;
+    rightMaxNum = 10;
   } else if (choiceLevel === "2") {
-    maxNum = 50;
+    leftMaxNum = 50;
+    rightMaxNum = 10;
   } else if (choiceLevel === "3") {
-    maxNum = 100;
+    leftMaxNum = 100;
+    rightMaxNum = 10;
   }
   area.style.display = "block";
   menu[0].style.display = "none";
@@ -81,24 +109,28 @@ function start(){
     problem();
     score = 0;
     document.getElementById("score").innerText = ""; 
-    setTimeout(gameOver, 10000);
+    timer = setTimeout(gameOver, 30000);
 }
 
 //問題作成処理
 function problem(){
-  document.getElementById("expressionLeft").value = Math.floor(Math.random() * maxNum) + 1;
-  document.getElementById("expressionRight").value = Math.floor(Math.random() * maxNum) + 1;
+  document.getElementById("expressionLeft").value = Math.floor(Math.random() * leftMaxNum) + 1;
+  document.getElementById("expressionRight").value = Math.floor(Math.random() * rightMaxNum) + 1;
   document.getElementById("answer").value = "";
   document.getElementById("judge").innerText = "";
+  a = Number(document.getElementById("expressionLeft").value);
+  b = Number(document.getElementById("expressionRight").value);
+  if (Number.isInteger(eval(`${a} ${choiceOpe} ${b}`)) === false) {
+    problem();
+  }
 }
 
 //答え合わせ処理
 function judge(){
-  a = Number(document.getElementById("expressionLeft").value);
-  b = Number(document.getElementById("expressionRight").value);
   c = Number(document.getElementById("answer").value);
-  let answer = a + b;
-  if (answer === c) {
+  // let answered = answer(a,b,choiceOpe);
+  let answered = eval(`${a} ${choiceOpe} ${b}`);
+  if (answered === c) {
     problem();
     document.getElementById("judge").innerText = "せいかい！";
     score += 10;
@@ -108,6 +140,7 @@ function judge(){
     document.getElementById("judge").innerText = "あれれ～？";
   }
 }
+
 
 function gameOver(){
   alert(`あなたのスコアは${score}です！`)
