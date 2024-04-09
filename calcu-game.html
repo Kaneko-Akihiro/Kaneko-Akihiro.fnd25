@@ -11,6 +11,30 @@
   <div id = "title">
     <h1>けいさんゲーム</h1>
   </div>
+  <div class="selectOperator">
+    <h2>むずかしさをえらんでね！</h2>
+    <div>
+      <button id = "+" type="menu" class=operator>
+        たしざん
+      </button>
+    </div>
+    <div>
+      <button id = "-" type="menu" class=operator>
+        ひきざん
+      </button>
+    </div>
+    <div>
+      <button id = "*" type="menu" class=operator>
+        かけざん
+      </button>
+    </div>
+    <div>
+      <button id = "/" type="menu" class=operator>
+        わりざん
+      </button>
+    </div>
+  </div>
+
   <div class="menu">
     <h2>むずかしさをえらんでね！</h2>
     <div>
@@ -29,13 +53,15 @@
       </button>
     </div>
   </div>
-
+  
     <div id = "answerArea">
       <div id = "question" ></div>
       <p><input id="start" type="button" value="スタート"></p>
-      <input class ="expression" id = "expressionLeft">+
-      <input class ="expression" id = "expressionRight">=
-      <input class ="expression" id = "answer">
+      <div class="flexbox">
+        <input class ="expression" id = "expressionLeft"><div id="operators"></div>
+        <input class ="expression" id = "expressionRight"><div id="operators">　=　</div>
+        <input class ="expression" id = "answer">
+      </div>
       <div id = "score"></div>
       <div id = "judge"></div>
     </div>
