@@ -24,7 +24,7 @@ h2{
   font-size: 1rem;
   /* 色 */
   color: aliceblue;
-
+  display: none;
 }
 
 .level {
@@ -38,6 +38,42 @@ h2{
   /* 色 */
   background-color: rgb(92, 212, 248);
 
+}
+
+.selectOperator {
+  /* 配置　*/
+  margin: 2rem auto;
+
+  /* サイズ */
+  width: 20rem;
+  height: 3rem;
+  font-size: 1rem;
+  /* 色 */
+  color: aliceblue;
+}
+
+.operator {
+  /* 配置　*/
+  margin: 2rem auto;
+  text-align: center;
+
+  /* サイズ */
+  width: 15rem;
+  height: 4rem;
+  font-size: 2rem;
+  /* 色 */
+  background-color: rgb(92, 212, 248);
+
+}
+
+.flexbox{
+  display:flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+#operators {
+  font-size: 50px;
 }
 
 .board-row{
