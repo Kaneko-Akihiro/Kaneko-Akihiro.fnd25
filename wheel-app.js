@@ -162,22 +162,7 @@ document.getElementById('deleteSelected').addEventListener('click', () => {
   canvasMain.renderAll();
 });
 
-// ==================== アフィリエイト検索 ====================
-function searchAmazon() {
-  const keyword = document.getElementById('searchKeyword').value.trim();
-  if (keyword) {
-    const tag = 'kirihasu-22';
-    window.open(`https://www.amazon.co.jp/s?k=${encodeURIComponent(keyword)}&tag=${tag}`, '_blank');
-  }
-}
 
-function searchRakuten() {
-  const keyword = document.getElementById('searchKeyword').value.trim();
-  if (keyword) {
-    const id = '1ea2874e.9ad94166.1ea2874f.154a7c81';
-    window.open(`https://hb.afl.rakuten.co.jp/hgc/${id}/?pc=https://search.rakuten.co.jp/search/mall/${encodeURIComponent(keyword)}/`, '_blank');
-  }
-}
 
 // ==================== 画像ペースト対応 ====================
 document.addEventListener('paste', event => {
