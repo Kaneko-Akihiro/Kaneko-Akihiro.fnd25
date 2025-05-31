@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>ホイール切り抜き合成アプリ</title>
-  <link rel="stylesheet" href="wheel-app.css">
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.2.4/fabric.min.js"></script>
 </head>
 <body>
 
   <div>
-    <label>🚗 車の画像をアップロード：</label>
+    <h3>🚗 車の画像をアップロード</h3>
     <input type="file" id="carUpload" accept="image/*">
   </div>
 
@@ -28,16 +28,17 @@
       <h3>🚘 合成結果</h3>
       <canvas id="canvasMain" width="600" height="450"></canvas>
       <div class="button-group">
-        <button id="saveImage">💾 合成画像を保存</button>
+        <button id="saveImage">💾 画像を保存</button>
         <div id="saveTip" style="display:none; padding:10px; border:1px solid #ccc; margin-top:10px;">
           📱 スマホの場合は画像を長押しして「写真に保存」してください
           <br>
           <img id="savedImage" src="" style="max-width:100%; margin-top:10px;">
         </div>
         
-        <button id="deleteSelected">🗑️ 選択中のホイール画像を削除</button>
+        <button id="deleteSelected">🗑️ 選択中🛞を削除</button>
       </div>
     </div>
+      
   </div>
 
   <script src="wheel-app.js"></script>
