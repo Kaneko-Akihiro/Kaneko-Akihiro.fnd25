@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>ホイール切り抜き合成アプリ</title>
+
+  <!-- Fabric.js（CDN） -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.2.4/fabric.min.js"></script>
+  <link rel="stylesheet" href="style.css"> 
+</head>
+
+<body>
+  <h1>ホイール切り抜き合成アプリ</h1>
+
+  <div class="content">
+
+    <!-- ===== 左カラム: 車両アップロード＆ホイールプレビュー ===== -->
+    <div class="left-panel">
+
+      <!-- 1) 車両画像アップロード -->
+      <h3><i class="fas fa-car"></i> 車の画像をアップロード</h3>
+      <p class="description">
+        車全体の写真をドラッグ＆ドロップ、または↓ボタンをクリックして選択してください。
+      </p>
+      <div id="carDropArea" class="drop-area">
+        <i class="fas fa-cloud-upload-alt"></i> 車の画像をドラッグ＆ドロップ
+        <br>またはクリックで選択
+        <input
+          type="file"
+          id="carUpload"
+          accept="image/*"
+          style="display: none;"
+        >
+      </div>
+
+      <!-- 2) ホイール切り抜きプレビュー -->
+      <h3><i class="fas fa-circle-notch"></i> ホイール切り抜きプレビュー</h3>
+      <p class="description">
+        ホイール画像をドラッグ＆ドロップ、または↓ボタンでアップロードしてください。<br>
+        円をドラッグして位置を動かし、角ハンドルでサイズを変えて、切り抜く範囲を指定します。
+      </p>
+      <div id="wheelDropArea" class="drop-area">
+        <i class="fas fa-cloud-upload-alt"></i> ホイール画像をドラッグ＆ドロップ
+        <br>またはクリックで選択
+        <input
+          type="file"
+          id="wheelUpload"
+          accept="image/*"
+          style="display: none;"
+        >
+      </div>
+      <div class="canvas-wrapper">
+        <button id="confirmClip" class="btn btn-primary">
+          <i class="fas fa-cut"></i> 切り抜いて合成
+        </button>
+        <canvas id="canvasPreview" width="300" height="300"></canvas>
+      </div>
+
+    </div>
+
+
+    <!-- ===== 右カラム: 合成結果＆検索 ===== -->
+    <div class="right-panel">
+
+      <!-- 3) 合成結果 -->
+      <h3><i class="fas fa-car-side"></i> 合成結果</h3>
+      <p class="description">
+        切り抜き確定後、こちらにホイール画像が合成されます。<br>
+        ホイールは自由に移動・リサイズ可能です。
+      </p>
+      <div class="canvas-container">
+        <canvas id="canvasMain" width="600" height="450"></canvas>
+      </div>
+      <div class="button-group">
+        <button id="saveImage" class="btn btn-primary">
+          <i class="fas fa-save"></i> 画像を保存
+        </button>
+        <button id="deleteSelected" class="btn btn-danger">
+          <i class="fas fa-trash-alt"></i> 選択中を削除
+        </button>
+      </div>
+      <div id="saveTip" class="save-tip">
+        📱 スマホの場合は画像を長押しして「写真に保存」してください
+        <br>
+        <img id="savedImage" src="" alt="保存プレビュー" class="saved-img">
+      </div>
+
+      <!-- 4) 関連商品検索 -->
+      <h3><i class="fas fa-search"></i> 関連商品を探す</h3>
+      <p class="description">
+        ホイール名を入力して「Amazonで検索」「楽天で検索」を押すと、該当商品が表示されます。
+      </p>
+      <input
+        type="text"
+        id="searchKeyword"
+        class="input-text"
+        placeholder="ホイール名などを入力"
+      >
+      <div class="button-group">
+        <button id="searchAmazonBtn" class="btn btn-secondary">
+          <i class="fas fa-shopping-cart"></i> Amazonで検索
+        </button>
+        <button id="searchRakutenBtn" class="btn btn-secondary">
+          <i class="fas fa-shopping-basket"></i> 楽天で検索
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
