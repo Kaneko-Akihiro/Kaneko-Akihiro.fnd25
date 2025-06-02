@@ -1,228 +1,257 @@
-   /*────────────────────────────────────────────
-       全体スタイル
-    ────────────────────────────────────────────*/
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      margin: 0;
-      background-color: #f5f5f5;
-    }
-    h1 {
-      margin-top: 0;
-      text-align: center;
-    }
+/*────────────────────────────────────────────
+   全体リセット＆ベース
+────────────────────────────────────────────*/
+* {
+  box-sizing: border-box;
+}
 
-    .content {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+body {
+  font-family: sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+  color: #333; /* 説明文などをダークグレーに */
+}
 
-    .left-panel,
-    .right-panel {
-      background-color: #fff;
-      border-radius: 4px;
-      padding: 16px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+h1 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.6rem;
+  color: #222;
+}
 
-    .left-panel {
-      flex: 1 1 350px;
-      min-width: 300px;
-    }
+.content {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-    .right-panel {
-      flex: 1 1 450px;
-      min-width: 300px;
-    }
+/*────────────────────────────────────────────
+   パネル共通スタイル
+────────────────────────────────────────────*/
+.panel {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    /*────────────────────────────────────────────
-       見出し・説明文
-    ────────────────────────────────────────────*/
-    h3 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    h3 i {
-      font-size: 1.2rem;
-    }
-    .description {
-      font-size: 0.9rem;
-      color: #555;
-      margin: 0 0 12px 0;
-    }
+.left-panel {
+  flex: 1 1 360px;
+  min-width: 300px;
+}
 
-    /*────────────────────────────────────────────
-       ドラッグ＆ドロップエリア
-    ────────────────────────────────────────────*/
-    .drop-area {
-      border: 2px dashed #ccc;
-      border-radius: 4px;
-      padding: 20px;
-      text-align: center;
-      color: #777;
-      margin-bottom: 12px;
-      cursor: pointer;
-      background-color: #fafafa;
-      transition: background-color 0.2s, border-color 0.2s;
-    }
-    .drop-area.dragover {
-      border-color: #007bff;
-      background-color: #e6f0ff;
-    }
+.right-panel {
+  flex: 1 1 500px;
+  min-width: 300px;
+}
 
-    /*────────────────────────────────────────────
-       プレビュー用 Canvas
-    ────────────────────────────────────────────*/
-    #canvasPreview {
-      width: 300px !important;
-      height: 300px !important;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      display: block;
-      margin: 8px auto 12px auto;
-    }
+/*────────────────────────────────────────────
+   見出し & 説明文
+────────────────────────────────────────────*/
+h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #222;
+}
 
-    /*────────────────────────────────────────────
-       合成結果用 Canvas
-    ────────────────────────────────────────────*/
-    #canvasMain {
-      border: 1px solid #ccc;
-      background-color: #fafafa;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 8px auto 12px auto;
-    }
+h3 i {
+  font-size: 1.2rem;
+  color: #333;
+}
 
-    /*────────────────────────────────────────────
-       ボタン共通スタイル
-    ────────────────────────────────────────────*/
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background-color: #007bff;
-      color: #fff;
-      padding: 8px 14px;
-      font-size: 0.95rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.2s;
-      margin-bottom: 8px;
-    }
-    .btn:hover { background-color: #0056b3; }
-    .btn:disabled { background-color: #ccc; cursor: not-allowed; }
-    .btn-secondary {
-      background-color: #6c757d;
-    }
-    .btn-secondary:hover {
-      background-color: #565e64;
-    }
-    .btn-danger {
-      background-color: #dc3545;
-    }
-    .btn-danger:hover {
-      background-color: #a71d2a;
-    }
+.description {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #444;
+  margin: 0 0 12px 0;
+}
 
-    /*────────────────────────────────────────────
-       テキスト入力（検索用）
-    ────────────────────────────────────────────*/
-    .input-text {
-      width: 100%;
-      max-width: 300px;
-      padding: 8px 12px;
-      font-size: 0.95rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-bottom: 8px;
-    }
+/*────────────────────────────────────────────
+   ドラッグ＆ドロップエリア
+────────────────────────────────────────────*/
+.drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  color: #777;
+  margin-bottom: 16px;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
 
-    /*────────────────────────────────────────────
-       レイアウト調整用
-    ────────────────────────────────────────────*/
-    .canvas-wrapper {
-      text-align: left;
-      margin-bottom: 12px;
-    }
+.drop-area.dragover {
+  border-color: #007bff;
+  background-color: #e6f0ff;
+}
 
-    .canvas-container {
-      text-align: left;
-      margin-bottom: 12px;
-    }
+/*────────────────────────────────────────────
+   プレビュー用 Canvas
+────────────────────────────────────────────*/
+#canvasPreview {
+  width: 300px !important;
+  height: 300px !important;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: block;
+  margin: 8px auto 16px auto;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
 
-    /*────────────────────────────────────────────
-       保存ヒント＆保存プレビュー
-    ────────────────────────────────────────────*/
-    .save-tip {
-      display: none;
-      margin-top: 12px;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background: #fff;
-      font-size: 0.9rem;
-      color: #333;
-      text-align: center;
-    }
-    .saved-img {
-      max-width: 100%;
-      margin-top: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+/*────────────────────────────────────────────
+   合成結果用 Canvas
+────────────────────────────────────────────*/
+.canvas-container {
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px dashed #999;
+  background-color: #fafafa;
+  text-align: left; /* 左寄せ */
+}
 
-    /*────────────────────────────────────────────
-       ボタン群レイアウト
-    ────────────────────────────────────────────*/
-    .button-group {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      margin-bottom: 12px;
-    }
+#canvasMain {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
 
-    /*────────────────────────────────────────────
-       メディアクエリ（レスポンシブ）
-    ────────────────────────────────────────────*/
-    @media (max-width: 768px) {
-      .content {
-        flex-direction: column;
-      }
-      .left-panel,
-      .right-panel {
-        width: 100%;
-        padding: 12px;
-      }
-      h3 {
-        font-size: 1rem;
-      }
-      .description {
-        font-size: 0.85rem;
-      }
-      .btn {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 6px;
-      }
-      .button-group {
-        flex-direction: column;
-      }
-      #canvasMain,
-      #canvasPreview {
-        width: 100% !important;
-        height: auto !important;
-      }
-    }
+/*────────────────────────────────────────────
+   ボタン共通
+────────────────────────────────────────────*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  margin-bottom: 8px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+.btn-secondary:hover {
+  background-color: #565e64;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+.btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+/*────────────────────────────────────────────
+   テキスト入力（検索用）
+────────────────────────────────────────────*/
+.input-text {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+/*────────────────────────────────────────────
+   レイアウト調整
+────────────────────────────────────────────*/
+.canvas-wrapper {
+  text-align: left; /* 左寄せ */
+  margin-bottom: 16px;
+}
+
+/*────────────────────────────────────────────
+   ボタン群レイアウト（左寄せ）
+────────────────────────────────────────────*/
+.button-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* 左寄せに */
+  margin-bottom: 16px;
+}
+
+/*────────────────────────────────────────────
+   保存ヒント＆保存プレビュー
+────────────────────────────────────────────*/
+.save-tip {
+  display: none;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 0.95rem;
+  color: #333;
+  text-align: center;
+}
+
+.saved-img {
+  max-width: 100%;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/*────────────────────────────────────────────
+   メディアクエリ（レスポンシブ）
+────────────────────────────────────────────*/
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    padding: 12px;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .button-group {
+    flex-direction: column;
+  }
+  /* 合成結果・プレビューともに幅100%で高さ自動調整 */
+  #canvasMain,
+  #canvasPreview {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
